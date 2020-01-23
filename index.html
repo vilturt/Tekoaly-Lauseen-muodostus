@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8" />
+        <script>
+
+                
+                // luodaan taulukot eri lauseenjäsenille
+                
+                let adjektiivit = [];
+                
+                let verbit = [];
+                
+                let tekijat = [];
+                
+                let kohteet = [];
+                
+                // lisäys funktiot jäsenille
+                
+                function lisaaAdjektiivi() {
+                  uusiAdjektiivi = document.getElementById("adjSyote").value;
+                  adjektiivit.push(uusiAdjektiivi);
+                  document.getElementById("adjDispl").innerHTML = adjektiivit;
+                }
+                
+                function lisaaVerbi() {
+                  uusiVerbi = document.getElementById("verbSyote").value;
+                  verbit.push(uusiVerbi);
+                  document.getElementById("vrbDispl").innerHTML = verbit;
+                }
+
+                function lisaaTekija() {
+                  uusiTekija = document.getElementById("tekijaSyote").value;
+                  tekijat.push(uusiTekija);
+                  document.getElementById("tekDispl").innerHTML = tekijat;
+                }
+
+                function lisaaObjekti() {
+                  uusiObjekti = document.getElementById("objektiSyote").value;
+                  kohteet.push(uusiObjekti);
+                  document.getElementById("objDispl").innerHTML = kohteet;
+                }
+
+                // arvonta funktio
+
+                function arpovaFunktio(suurin) {
+                    return Math.floor(Math.random() * Math.floor(suurin));
+                }
+
+                function muodostaLause() {
+
+                    if (adjektiivit.length === 0) {
+                        window.alert("Syötä ensin adjektiivi!");
+                    }
+
+                    if (verbit.length === 0) {
+                        window.alert("Syötä ensin verbi!");
+                    }
+
+                    if (tekijat.length === 0) {
+                        window.alert("Syötä ensin tekijä!");
+                    }
+
+                    if (kohteet.length === 0) {
+                        window.alert("Syötä ensin objektiivi/kohde!");
+                    }
+
+                    // arvotaan lauseeseen kuuluvat sanat
+
+                    let lauseenTekija = tekijat[arpovaFunktio(tekijat.length)];
+                    let lauseenVerbi = verbit[arpovaFunktio(verbit.length)];
+                    let lauseenAdjektiivi = adjektiivit[arpovaFunktio(adjektiivit.length)];
+                    let lauseenKohde = kohteet[arpovaFunktio(kohteet.length)];
+
+                    let lause = lauseenTekija + " " + lauseenVerbi + " " + lauseenAdjektiivi + " " + lauseenKohde;
+
+                    window.alert("Lause muodostettu!");
+                    window.alert(lause);
+                }
+
+                </script>
+
+</head>
+
+<body>
+
+        <h2>Tekoäly, lauseiden muodostaminen</h2>
+
+        <hr>
+        
+        
+        
+        <input id="adjSyote">
+        
+        <button type="button" onclick="lisaaAdjektiivi()">Lisää adjektiivi</button>
+        
+        <hr>
+        
+        
+        <input id="verbSyote">
+        
+        <button type="button" onclick="lisaaVerbi()">Lisää verbi</button>
+        
+        <hr>
+        
+        
+        <input id="tekijaSyote">
+        
+        <button type="button" onclick="lisaaTekija()">Lisää tekijä</button>
+        
+        <hr>
+        
+        
+        <input id="objektiSyote">
+        
+        <button type="button" onclick="lisaaObjekti()">Lisää objekti</button>
+        
+        <p><b>Adjektiivit</b></p>
+
+        <p id="adjDispl"></p>
+
+        <p><b>Verbit</b></p>
+
+        <p id="vrbDispl"></p>
+        
+        <p><b>Tekijat</b></p>
+
+        <p id="tekDispl"></p>
+
+        <p><b>Kohteet</b></p>
+
+        <p id="objDispl"></p>
+
+        <button type="button" onclick="muodostaLause()">Muodosta lause</button>
+
+</body>
+</html>
